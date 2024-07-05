@@ -28,5 +28,5 @@ struct WeatherListCellView: View {
 }
 
 #Preview {
-    WeatherListCellView(weatherData: WeatherData(id: "1234", name: "City Name", country: Country(countryID: "5633", name: "Country Name"), weatherCondition: "Weather Condition", weatherWind: "", weatherHumidity: "", weatherTemp: "10", weatherFeelsLike: "", weatherLastUpdated: nil))
+    WeatherListCellView(weatherData: WeatherData(id: "1234", name: "City Name", country: Country(id: "5633", name: "Country Name"), weatherCondition: "Weather Condition", weatherWind: "", weatherHumidity: "", weatherTemp: "10", weatherFeelsLike: "", weatherLastUpdated: nil))
 }

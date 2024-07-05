@@ -17,18 +17,24 @@ enum SortOptions {
     
     @Published var weatherDataCollection:[WeatherData] = []
     @Published var selectedSortOption:SortOptions = .alphabetical
+    @Published var countries:[Country] = []
+    @Published var selectedFilter:String = "All"
+    
+    private var defaultWeatherDataCollection:[WeatherData] = []
     
     func getWeatherData() {
         Task {
             do {
                 let unfilteredDataCollection =  try await NetworkManager.shared.fetchWeatherData()
-                weatherDataCollection = unfilteredDataCollection.filter { weatherData in
+                defaultWeatherDataCollection = unfilteredDataCollection.filter { weatherData in
                     if let _ = weatherData.weatherCondition, let _ = weatherData.weatherTemp {
                         return true
                     } else {
                         return false
                     }
                 }
+                countries = Array(Set(defaultWeatherDataCollection.map{$0.country})).sorted{$0.name < $1.name}
+                updateList()
             } catch {
                 print(error)
             }
@@ -36,6 +42,7 @@ enum SortOptions {
     }
     
     func updateList() {
+        weatherDataCollection = defaultWeatherDataCollection
         switch selectedSortOption {
         case .alphabetical:
             weatherDataCollection = weatherDataCollection.sorted{$0.name < $1.name}
@@ -44,5 +51,10 @@ enum SortOptions {
         case .lastUpdated:
             weatherDataCollection = weatherDataCollection.sorted{$0.weatherLastUpdated ?? Date() > $1.weatherLastUpdated ?? Date()}
         }
+        
+        if selectedFilter != "All" {
+            weatherDataCollection = weatherDataCollection.filter{$0.country.id == selectedFilter}
+        }
+
     }
 }

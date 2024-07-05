@@ -30,6 +30,19 @@ struct WeatherListView: View {
             }
             .onAppear{weatherListViewModel.getWeatherData()}
             .navigationTitle("Weather")
+            
+            Picker("Filter",
+                   selection: $weatherListViewModel.selectedFilter,
+                   content:{
+                        Text("All Countries").tag("All")
+                        ForEach(weatherListViewModel.countries) { country in
+                        Text("\(country.name)").tag(country.id)
+                        }
+            }).padding()
+                .pickerStyle(.navigationLink)
+                .onChange(of: weatherListViewModel.selectedFilter) { _, _ in
+                    weatherListViewModel.updateList()
+                }
         }
     }
 }

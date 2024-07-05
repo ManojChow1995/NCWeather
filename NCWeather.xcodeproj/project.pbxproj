@@ -61,8 +61,8 @@
 		D04071862C378A930032651B /* NCWeather */ = {
 			isa = PBXGroup;
 			children = (
-				D04071C42C37E5F40032651B /* VIews */,
 				D04071BB2C37C2870032651B /* Services */,
+				D04071C42C37E5F40032651B /* VIews */,
 				D04071B82C37C2310032651B /* Models */,
 				D04071872C378A930032651B /* NCWeatherApp.swift */,
 				D04071892C378A930032651B /* ContentView.swift */,

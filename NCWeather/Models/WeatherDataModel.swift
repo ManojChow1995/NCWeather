@@ -31,12 +31,12 @@ struct WeatherData: Decodable, Identifiable {
     }
 }
 
-struct Country: Decodable {
-    let countryID: String
+struct Country: Decodable, Identifiable, Hashable  {
+    let id: String
     let name: String
     
     enum CodingKeys: String, CodingKey {
-        case countryID = "_countryID"
+        case id = "_countryID"
         case name = "_name"
     }
 }
