@@ -14,7 +14,7 @@ struct WeatherListCellView: View {
             VStack(alignment: .leading, spacing: 5){
                 Text(weatherData.name)
                     .font(.title2)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
                 Text(weatherData.weatherCondition ?? "")
                     .foregroundStyle(.gray)
             }
