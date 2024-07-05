@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct WeatherData: Decodable {
-    let venueID: String
+struct WeatherData: Decodable, Identifiable {
+    let id: String
     let name: String
     let country: Country
     let weatherCondition: String?
@@ -19,7 +19,7 @@ struct WeatherData: Decodable {
     let weatherLastUpdated: Date?
     
     enum CodingKeys: String, CodingKey {
-        case venueID = "_venueID"
+        case id = "_venueID"
         case name =  "_name"
         case country = "_country"
         case weatherCondition = "_weatherCondition"
