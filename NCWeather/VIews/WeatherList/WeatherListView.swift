@@ -34,7 +34,7 @@ struct WeatherListView: View {
                     WeatherListCellView(weatherData: weatherData)
                 }
             }
-            .onAppear{weatherListViewModel.getWeatherData()}
+            .onAppear{weatherListViewModel.updateList()}
             .navigationTitle("Weather")
             .refreshable {
                 weatherListViewModel.getWeatherData()
