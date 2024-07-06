@@ -23,7 +23,7 @@ struct WeatherListCellView: View {
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .foregroundStyle(.cyan)
-        }.padding()
+        }.padding(.vertical)
     }
 }
 

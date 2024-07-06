@@ -48,6 +48,7 @@ struct WeatherListView: View {
                         Text("\(country.name)").tag(country.id)
                         }
             }).padding()
+                .padding(.horizontal)
                 .pickerStyle(.navigationLink)
                 .onChange(of: weatherListViewModel.selectedFilter) { _, _ in
                     weatherListViewModel.updateList()
