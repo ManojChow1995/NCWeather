@@ -26,7 +26,9 @@ struct WeatherListView: View {
                 }
 
             List(weatherListViewModel.weatherDataCollection) {weatherData in
-                WeatherListCellView(weatherData: weatherData)
+                NavigationLink( destination: WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(weatherData: weatherData))) {
+                    WeatherListCellView(weatherData: weatherData)
+                }
             }
             .onAppear{weatherListViewModel.getWeatherData()}
             .navigationTitle("Weather")
