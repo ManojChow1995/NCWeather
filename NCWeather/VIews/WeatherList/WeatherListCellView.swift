@@ -15,11 +15,11 @@ struct WeatherListCellView: View {
                 Text(weatherData.name)
                     .font(.title2)
                     .fontWeight(.bold)
-                Text(weatherData.weatherCondition ?? "")
+                Text(weatherData.weatherCondition ?? "NA")
                     .foregroundStyle(.gray)
             }
             Spacer()
-            Text("\(weatherData.weatherTemp ?? "")°")
+            Text("\(weatherData.weatherTemp ?? "NA")°")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
                 .foregroundStyle(.cyan)

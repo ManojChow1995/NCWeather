@@ -63,5 +63,5 @@ struct WeatherDetailView: View {
 }
 
 #Preview {
-    WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(weatherData: WeatherData(id: "1234", name: "City Name", country: Country(id: "5633", name: "Country Name"), weatherCondition: "Weather Condition", weatherWind: "NNW at 20.9kph", weatherHumidity: "71%", weatherTemp: "10", weatherFeelsLike: "5", weatherLastUpdated: nil)))
+    WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(weatherData: WeatherData(id: "1234", name: "City Name", country: Country(id: "5633", name: "Country Name"), weatherCondition: "Weather Condition", weatherWind: "NNW at 20.9kph", weatherHumidity: "71%", weatherTemp: "10", weatherFeelsLike: "5", weatherLastUpdated: Date())))
 }
