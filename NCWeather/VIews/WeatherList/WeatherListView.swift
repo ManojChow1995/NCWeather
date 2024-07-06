@@ -24,6 +24,10 @@ struct WeatherListView: View {
                 .onChange(of: weatherListViewModel.selectedSortOption) { _, _ in
                     weatherListViewModel.updateList()
                 }
+            
+            Text("Last updated on \(weatherListViewModel.lastUpdateDateString)")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
 
             List(weatherListViewModel.weatherDataCollection) {weatherData in
                 NavigationLink( destination: WeatherDetailView(weatherDetailViewModel: WeatherDetailViewModel(weatherData: weatherData))) {
@@ -32,6 +36,9 @@ struct WeatherListView: View {
             }
             .onAppear{weatherListViewModel.getWeatherData()}
             .navigationTitle("Weather")
+            .refreshable {
+                weatherListViewModel.getWeatherData()
+            }
             
             Picker("Filter",
                    selection: $weatherListViewModel.selectedFilter,

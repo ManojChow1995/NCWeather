@@ -19,13 +19,19 @@ enum SortOptions {
     @Published var selectedSortOption:SortOptions = .alphabetical
     @Published var countries:[Country] = []
     @Published var selectedFilter:String = "All"
+    @Published var lastUpdateDateString:String = ""
     
     private var defaultWeatherDataCollection:[WeatherData] = []
+    
+    init() {
+        getWeatherData()
+    }
     
     func getWeatherData() {
         Task {
             do {
                 let unfilteredDataCollection =  try await NetworkManager.shared.fetchWeatherData()
+                lastUpdateDateString = "\(Date().formatted(date: .long, time: .standard))"
                 defaultWeatherDataCollection = unfilteredDataCollection.filter { weatherData in
                     if let _ = weatherData.weatherCondition, let _ = weatherData.weatherTemp {
                         return true
